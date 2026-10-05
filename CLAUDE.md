@@ -66,10 +66,9 @@ wait for John's decision. Don't choose for him.
 
 - Mobile-first breakpoints: base < 640 px, tablet ≥ 640 px, desktop ≥ 1024 px.
 - WCAG 2.1 AA: keyboard operable, visible focus, AA contrast in both
-  themes, honors `prefers-reduced-motion`. Tap targets at least 44 px.
-- Light/dark theme follows the visitor's local time (light 07:00–19:00),
-  with a header toggle saved in `localStorage`. The theme is set before
-  first paint.
+  palette, honors `prefers-reduced-motion`. Tap targets at least 44 px.
+- Dark theme only. There is no light theme and no theme toggle; the
+  page declares `color-scheme: dark`.
 - All content and navigation work without JavaScript.
 - Lighthouse mobile score ≥ 90 in every category.
 - No tracking or third-party cookies.

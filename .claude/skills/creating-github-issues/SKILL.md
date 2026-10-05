@@ -59,7 +59,7 @@ As a <visitor type | John | maintainer>, I want <capability> so that <benefit>.
 ## Acceptance criteria
 - [ ] <Specific, observable, testable outcome>
 - [ ] <...>
-- [ ] Meets site-wide requirements (spec §6) where applicable: mobile-first at 360/768/1280 px, WCAG 2.1 AA, both themes, works without JavaScript
+- [ ] Meets site-wide requirements (spec §6) where applicable: mobile-first at 360/768/1280 px, WCAG 2.1 AA, dark-theme contrast, works without JavaScript
 
 ## Dependencies
 Depends on: #<n>, #<n>   <!-- or "None" -->
@@ -73,8 +73,8 @@ Depends on: #<n>, #<n>   <!-- or "None" -->
 - Every criterion must be checkable with a true/false answer by a tester.
   Good: "Nav collapses behind a menu button below 1024 px." Bad: "Nav
   looks good on mobile."
-- Include the edge cases: no JavaScript, keyboard only, dark theme,
-  empty content, long text.
+- Include the edge cases: no JavaScript, keyboard only, empty content,
+  long text.
 - For decision issues (stack, hosting, visual design), the criteria are
   "a decision record exists in `docs/decisions/` with options, trade-offs
   and a recommendation", plus "John has approved it".

@@ -24,7 +24,7 @@ résumé, and find a way to get in touch.
 ## 2. Scope
 
 **In v1:** Home (including About and Contact sections), Projects index,
-Project detail, Experience, 404, light/dark theming, CI/CD, and deployment
+Project detail, Experience, 404, a dark theme, CI/CD, and deployment
 to `https://elrod.id`.
 
 **Deferred to Backlog:** Writing/Blog, contact form, project tag filtering,
@@ -82,7 +82,7 @@ Home "featured projects" are the projects with `featured: true`, ordered by
 
 ### 4.1 Global shell (every page)
 
-- **Header:** "John Elrod" wordmark (links to `/`), primary nav, theme toggle.
+- **Header:** "John Elrod" wordmark (links to `/`), primary nav.
 - **Primary nav:** Projects (`/projects`), Experience (`/experience`),
   About (`/#about`), Contact (`/#contact`). The anchor links work from any
   page. On the home page they scroll smoothly to the section, or jump
@@ -105,7 +105,7 @@ Base styles target phones. Breakpoints only add enhancements.
 ```
 PHONE                         DESKTOP
 ┌──────────────────┐          ┌───────────────────────────────────────────────┐
-│ John Elrod  ◐ ☰  │          │ John Elrod  Projects Experience About Contact ◐│
+│ John Elrod     ☰ │          │ John Elrod   Projects Experience About Contact │
 ├──────────────────┤          ├───────────────────────────────────────────────┤
 │ [photo]          │          │  Headline + value statement          [photo]  │
 │ Headline         │          │  [Résumé] [Contact]                           │
@@ -121,27 +121,17 @@ PHONE                         DESKTOP
 ├──────────────────┤          │  footer                                       │
 │ footer           │          └───────────────────────────────────────────────┘
 └──────────────────┘
-◐ = theme toggle
 ```
 
-## 5. Light / dark theme
+## 5. Theme
 
-- **Automatic mode (default):** light from 07:00 to 19:00 in the visitor's
-  local time; dark otherwise. The two boundary hours are configuration values.
-- **Override:** a sun/moon toggle in the header. The choice is saved in the
-  visitor's browser (`localStorage`) and takes precedence over the clock. A
-  way back to automatic mode is provided (e.g. a three-state toggle: Auto →
-  Light → Dark, or a "reset" in the toggle's menu; finalized in the design
-  basics issue).
-- **No flash:** the theme is set before first paint by a small inline
-  script in the document head.
-- **Live switching:** in automatic mode, an open page switches theme when
-  a boundary hour passes.
-- **Without JavaScript:** the site falls back to the visitor's
-  `prefers-color-scheme` setting. The toggle is hidden.
-- **If browser storage is unavailable** (e.g. a private window): automatic
-  mode still works, and the override lasts only for that page view.
-- Both palettes must meet WCAG 2.1 AA contrast.
+- **Dark only.** The site has a single dark theme. There is no light
+  theme, no theme toggle, and no time-of-day or device-preference
+  switching.
+- The page declares `color-scheme: dark`, so the browser draws its own
+  controls and scrollbars dark as well.
+- The theme is pure CSS and needs no JavaScript.
+- The palette must meet WCAG 2.1 AA contrast.
 
 ## 6. Cross-cutting requirements
 
@@ -158,7 +148,7 @@ criteria.
   Open Graph and Twitter card tags; `sitemap.xml`; `robots.txt`; canonical
   URLs on `https://elrod.id`.
 - **Works without JavaScript:** all content and navigation work without
-  scripts. Only the theme toggle and menu animation need JavaScript; with
+  scripts. Only the menu animation needs JavaScript; with
   JavaScript off, the mobile menu still opens using a no-JS fallback
   (e.g. `<details>` or `:target`).
 - **Privacy:** no tracking or third-party cookies in v1. The email address
@@ -190,8 +180,7 @@ Claude, as tester, owns verification:
   the PR.
 - Automated: the CI checks listed in §7.
 - Manual: a responsive pass at 360, 768 and 1280 px wide; a keyboard-only
-  pass; a screen-reader spot check; both themes, including the time
-  boundaries (tested by simulating the clock); JavaScript disabled.
+  pass; a screen-reader spot check; JavaScript disabled.
 
 ## 9. GitHub issue plan
 
@@ -213,26 +202,25 @@ Each issue contains a user story, acceptance criteria, and dependencies.
 |---|---|---|---|
 | 1 | Decide technology stack and hosting (decision record) | documentation | — |
 | 2 | Define content model for projects, roles, and site profile | content | 1 |
-| 3 | Design basics: type scale, spacing, light/dark color palettes | layout, accessibility | — |
+| 3 | Design basics: type scale, spacing, dark color palette | layout, accessibility | — |
 | 4 | Site shell: header, footer, skip link, main landmark | layout | 1, 3 |
 | 5 | Responsive navigation: mobile menu, desktop inline nav, cross-page anchors | layout, accessibility | 4 |
-| 6 | Light/dark theme: time-of-day auto mode with header toggle and saved choice | enhancement, accessibility | 3, 4 |
-| 7 | Home page: hero, featured projects, recent experience | page | 2, 4 |
-| 8 | Home page: `#about` section | page | 7 |
-| 9 | Home page: `#contact` section | page | 7 |
-| 10 | Projects index page | page | 2, 4 |
-| 11 | Project detail page | page | 10 |
-| 12 | Experience page | page | 2, 4 |
-| 13 | Résumé PDF download | enhancement | 12 |
-| 14 | 404 page | page | 4 |
-| 15 | SEO and social sharing metadata | enhancement | 4 |
-| 16 | Accessibility baseline and audit | accessibility | 7–14 |
-| 17 | Performance baseline | enhancement | 7–14 |
-| 18 | Infrastructure as code: hosting, DNS, HTTPS for elrod.id | infrastructure | 1 |
-| 19 | CI pipeline: build, lint, validation, link, a11y, Lighthouse checks | infrastructure | 1 |
-| 20 | CD pipeline: production deploy on `main`, PR previews, rollback | infrastructure | 18, 19 |
-| 21 | Branch protection and pull request workflow | infrastructure, documentation | 19 |
-| 22 | Initial content: bio, headshot, projects, roles, résumé PDF (owner: John) | content | 2 |
+| 6 | Home page: hero, featured projects, recent experience | page | 2, 4 |
+| 7 | Home page: `#about` section | page | 6 |
+| 8 | Home page: `#contact` section | page | 6 |
+| 9 | Projects index page | page | 2, 4 |
+| 10 | Project detail page | page | 9 |
+| 11 | Experience page | page | 2, 4 |
+| 12 | Résumé PDF download | enhancement | 11 |
+| 13 | 404 page | page | 4 |
+| 14 | SEO and social sharing metadata | enhancement | 4 |
+| 15 | Accessibility baseline and audit | accessibility | 6–13 |
+| 16 | Performance baseline | enhancement | 6–13 |
+| 17 | Infrastructure as code: hosting, DNS, HTTPS for elrod.id | infrastructure | 1 |
+| 18 | CI pipeline: build, lint, validation, link, a11y, Lighthouse checks | infrastructure | 1 |
+| 19 | CD pipeline: production deploy on `main`, PR previews, rollback | infrastructure | 17, 18 |
+| 20 | Branch protection and pull request workflow | infrastructure, documentation | 18 |
+| 21 | Initial content: bio, headshot, projects, roles, résumé PDF (owner: John) | content | 2 |
 
 ### Backlog
 

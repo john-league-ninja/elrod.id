@@ -44,7 +44,7 @@ to `main`, and never closes issues by hand.**
    - Run every check that exists: build, lint, tests, and the CI checks
      once they have been set up.
    - Go through each acceptance criterion and record the evidence: the
-     command output, the viewport and theme tested, the keyboard pass.
+     command output, the viewport tested, the keyboard pass.
    - If a criterion can't be met or checked, don't mark it done. Explain
      why in the PR.
 7. **Commit** with an imperative subject that references the issue,
@@ -67,7 +67,7 @@ Closes #<n>
 <What changed and why, 2–4 bullets.>
 
 ## Acceptance criteria
-- [x] <criterion copied from issue> — <evidence: command/output, viewport, theme, etc.>
+- [x] <criterion copied from issue> — <evidence: command/output, viewport, etc.>
 - [ ] <criterion not met> — <why, and what is needed>
 
 ## Testing
